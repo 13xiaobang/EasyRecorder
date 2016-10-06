@@ -1,9 +1,7 @@
 package com.recorder.frank.myrecorder;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,10 +11,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ZoomButton;
 
 import com.tools.titlepopup.TitlePopup;
 import com.tools.titlepopup.ActionItem;
@@ -34,8 +30,6 @@ import jxl.Workbook;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 
-import static android.R.id.list;
-import static android.support.v4.app.ActivityCompat.startActivityForResult;
 import static com.tools.titlepopup.Util.getDateString;
 
 
@@ -48,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayAdapter<String> arrayAdapter;
     int row_ready_tobe_del;
     int cur_sel;
-        // View.OnClickListener listener1 = null;
+
     public class AddRecord implements TitlePopup.OnItemOnClickListener {
        @Override
         public void onItemClick(ActionItem item, int position) {
@@ -76,8 +70,6 @@ public class MainActivity extends AppCompatActivity {
            }
         }
     }
-    private ListView listView = null;
-    private List<Map<String, Object>> data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
         init();
         setContentView(R.layout.activity_main);
-        ((ZoomButton) findViewById(R.id.imageButton)).setOnClickListener(new View.OnClickListener() {
+        (findViewById(R.id.imageButton)).setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -113,9 +105,6 @@ public class MainActivity extends AppCompatActivity {
                                     long arg3) {
                   cur_sel = (int)arg3;
             }
-
-
-
         });
 
         content_list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
@@ -170,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
             Workbook book  =  Workbook.getWorkbook( new  File( filename ));
             WritableWorkbook wbook = Workbook.createWorkbook(new File(filename), book);//
             //  获得第一个工作表对象
-            WritableSheet sheet  =  (WritableSheet) wbook.getSheet( 0 );
+            WritableSheet sheet  =  wbook.getSheet( 0 );
             sheet.removeRow(row);
             wbook.write();
             wbook.close();
@@ -185,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private ArrayList<String>  load_record_to_arr()
     {
-        String record = "";
+        String record;
         final Calendar c = Calendar.getInstance();
         int year = c.get(Calendar.YEAR);
         int month  = c.get(Calendar.MONTH)+1;
@@ -234,18 +223,6 @@ public class MainActivity extends AppCompatActivity {
         titlePopup = new TitlePopup(this, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         titlePopup.addAction(new ActionItem(this, "添加纪录", R.drawable.mm_title_btn_receiver_normal));
         titlePopup.addAction(new ActionItem(this, "修改纪录", R.drawable.mm_title_btn_set_normal));
-        //titlePopup.addAction(new ActionItem(this, "查看历史", R.drawable.mm_title_btn_share_normal));
-//        titlePopup.addAction(new ActionItem(this, "测试4", R.drawable.mm_title_btn_speaker_normal));
         titlePopup.setItemOnClickListener(new AddRecord());
-//        listener1 = new View.OnClickListener() {
-//            public void onClick(View v) {
-//
-//            }
     }
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.activity_main, menu);
-//        return true;
-//    }
 }

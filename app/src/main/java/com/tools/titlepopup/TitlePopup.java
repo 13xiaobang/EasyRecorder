@@ -18,7 +18,6 @@ import android.widget.TextView;
 import com.recorder.frank.myrecorder.R;
 
 public class TitlePopup extends PopupWindow {
-    public static final int TITLE_LEFT = 0;
     public static final int TITLE_RIGHT = 1;
     protected final int LIST_PADDING = 10;
 
@@ -89,12 +88,6 @@ public class TitlePopup extends PopupWindow {
             mIsDirty = true;
         }
     }
-
-//	public ActionItem getAction(int position){
-//		if(position < 0 || position > mActionItems.size())
-//			return null;
-//		return mActionItems.get(position);
-//	}
 
     public void setDirection(int direction){
         this.mDirection = direction;

@@ -1,6 +1,5 @@
 package com.recorder.frank.myrecorder;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
@@ -9,8 +8,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -22,22 +19,13 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.RandomAccessFile;
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import jxl.*;
 import jxl.write.Label;
-import jxl.write.WritableCell;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
-
-import static com.tools.titlepopup.Util.getDateString;
 
 public class AddRecordActivity extends AppCompatActivity {
 
@@ -88,7 +76,7 @@ public class AddRecordActivity extends AppCompatActivity {
 
         Intent it = this.getIntent();
         setContentView(R.layout.add_record);
-        if(((String)it.getSerializableExtra("activityMain")).equals("modify")) {
+        if((it.getSerializableExtra("activityMain")).equals("modify")) {
             status = 1; //modify
             mod_row = (int)it.getSerializableExtra("row");
             parseModifyRow(mod_row);
@@ -240,35 +228,6 @@ public class AddRecordActivity extends AppCompatActivity {
         }
     }
 
-//    // 生成文件
-//    public File makeFilePath(String filePath, String fileName) {
-//        File file = null;
-//        makeRootDirectory(filePath);
-//        try {
-//            file = new File(filePath + fileName);
-//            Log.e("zhf", "filepath=" + filePath + fileName);
-//            if (!file.exists()) {
-//                file.createNewFile();
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return file;
-//    }
-//
-//    // 生成文件夹
-//    public static void makeRootDirectory(String filePath) {
-//        File file = null;
-//        try {
-//            file = new File(filePath);
-//            if (!file.exists()) {
-//                file.mkdir();
-//                Log.e("zhf", "makeRootDirectory success="+filePath);
-//            }
-//        } catch (Exception e) {
-//            Log.e("zhf", "makeRootDirectory fail="+filePath);
-//        }
-//    }
     private final String[] mCountries = {"","衣", "食", "住", "行", "其他"};
 
     private void find_and_modify_view(String type) {
