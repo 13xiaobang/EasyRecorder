@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">简·记录</string>
+    <string name="app_title">简·记录</string>
+    <string name="add_record_str">简·添加记录</string>
+    <string name="default_edit">这里可以输入文字</string>
+    <string name="what">what:</string>
+    <string name="how_much">How much:</string>
+    <string name="date">Date:</string>
+    <string name="str_cancel">CANCEL</string>
+    <string name="str_ok">OK</string>
+</resources>

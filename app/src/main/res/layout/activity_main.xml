@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout   xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/my_wholelayout">
+    <FrameLayout android:id="@+id/TableLayout01"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:shrinkColumns="1"
+        android:stretchColumns="2"
+        android:background="#111111"
+        >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_title"
+        android:layout_alignParentTop="true"
+        android:id="@+id/textView_title"
+        android:textSize="20dp"
+        android:layout_gravity="left|center_vertical"
+        android:layout_marginLeft="15dp" />
+    <ZoomButton
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:id="@+id/imageButton"
+        android:src="@drawable/shezhi1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:gravity="right"
+        android:layout_marginRight="23dp"
+        android:layout_gravity="center_vertical|right" />
+    </FrameLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:collapseColumns="1"
+        android:orientation="horizontal"
+        android:clickable="true">
+
+        <ListView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/history_view"
+            android:listSelector="@color/colorPrimaryDark"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>
